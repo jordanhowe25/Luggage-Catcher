@@ -1,0 +1,50 @@
+body {
+    overflow: hidden;
+}
+.timer {
+    border: 1px solid black;
+    text-align: center;
+    width: 15%;
+    height: 5%;
+    left: 40%;
+    position: absolute;
+}
+.canvas {
+    position: absolute;
+}
+.canvas-container {
+    background-image: url('../images/full-background.png');
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    width: 70vw;
+    margin: 0 auto;
+    position: relative;
+}
+.dashboard-container {
+    border: 1px solid red;
+    height: 20vh;
+    width: 70vw;
+    margin: 1vh auto;
+    text-align: center;
+    
+}
+.btn-move-right {
+    display: inline-block;
+    width: 40%;
+    height: 100%;
+}
+.score-block {
+    display: inline-block;
+    width: 19%;
+    height: 100%;
+}
+.btn-move-left {
+    display: inline-block;
+    width: 40%;
+    height: 100%;
+}
+
+
+
+
