@@ -1,6 +1,7 @@
 //global vars
 var canvasWidth = (window.innerWidth * .7);
 var canvasHeight = (window.innerHeight * .7);
+var btnStart = document.getElementById('btn-start-game');
 
 //Create Canvas
 var canvas = document.getElementById('canvas');
@@ -128,3 +129,10 @@ function updateCanvas(){
   },100)
 }
 */
+
+/* Hides Start Window Screen when Start button is pressed */
+btnStart.addEventListener('click', hideStartWindow);
+
+function hideStartWindow() {
+	document.querySelector('.start-screen-window').style.display = "none";
+}
