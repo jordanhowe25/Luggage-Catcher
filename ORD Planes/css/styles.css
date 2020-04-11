@@ -13,6 +13,7 @@ body {
 }
 .canvas {
     position: absolute;
+    
 }
 .canvas-container {
     background-image: url('../images/full-background.png');
