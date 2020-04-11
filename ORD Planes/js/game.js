@@ -134,5 +134,5 @@ function updateCanvas(){
 btnStart.addEventListener('click', hideStartWindow);
 
 function hideStartWindow() {
-	document.querySelector('.start-screen-window').style.display = "none";
+	document.getElementById('start-screen-window').style.display = "none";
 }

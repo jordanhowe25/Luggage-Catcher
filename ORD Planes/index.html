@@ -8,9 +8,9 @@
   <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-	<div class="start-screen-window">
-		<div class="instructions-block">
-			<h1>ORD Planes</h1>
+	<div id="start-screen-window" class="pop-up-window">
+		<div class="start-game-block instructions-block">
+			<h1 class="game-tite">ORD Planes</h1>
 			<h3>Objective:</h3>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			<h3>How to play:</h3>
@@ -18,15 +18,23 @@
 			<button id="btn-start-game" class="purple-white-btn" >START</button>
 		</div>
 	</div>
-  <div class="canvas-container">
-    <div class="timer">GAME TIMER</div>
-    <canvas id="canvas"></canvas>
-  </div>
-  <div class="dashboard-container">
-    <button class="btn-move-right">MOVE RIGHT</button>
-    <div class="score-block">SCORE GOES HERE</div>
-    <button class="btn-move-left">MOVE LEFT</button>
-  </div>
+	<div class="canvas-container">
+		<div class="timer">GAME TIMER</div>
+		<canvas id="canvas"></canvas>
+	</div>
+    <div class="dashboard-container">
+		<button class="btn-move-right">MOVE RIGHT</button>
+		<div class="score-block">SCORE GOES HERE</div>
+		<button class="btn-move-left">MOVE LEFT</button>
+    </div>
+	<div id="end-screen-window" class="pop-up-window">
+		<div class="end-game-block instructions-block">
+			<h1 class="game-title">ORD Planes</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis suscipit assumenda harum, illo nostrum tempora similique libero odio modi eum nobis est nisi alias magnam asperiores voluptatum earum unde doloremque.</p>
+			<button id="btn-quit" class="white-purple-btn">Quit game</button>
+			<button id="btn-replay" class="purple-white-btn">PLAY AGAIN</button>
+		</div>
+	</div>
 
 
 
