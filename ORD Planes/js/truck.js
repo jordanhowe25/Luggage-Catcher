@@ -1,14 +1,30 @@
-/*
-// sets the cat's image
-var catImage = new Image();
-catImage.src = './images/cat.png';
+var truckImage = new Image();
+truckImage.src = './images/truck 1.png';
 
-
-// draws cat 
-
-function drawCat(){
-  ctx.drawImage(catImage,cat.x,cat.y, cat.width, cat.height)
+var truck = {
+  x: 600,
+  y: 540,
+  width: 112,
+  height: 65
 }
+
+function drawTruck(){
+  ctx.drawImage(truckImage, truck.x, truck.y, truck.width, truck.height);
+}
+
+function moveLeft(){
+  truck.x -= 10;
+}
+
+function moveRight(){
+  truck.x += 10;
+}
+
+function truckStop(){
+  truck.x += 0;
+}
+/*
+
 
 
 // controls movement

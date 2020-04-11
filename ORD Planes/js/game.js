@@ -1,7 +1,9 @@
 //global vars
-var canvasWidth = (window.innerWidth * .7);
-var canvasHeight = (window.innerHeight * .7);
+var canvasWidth = 1400;
+var canvasHeight = 700;
 var btnStart = document.getElementById('btn-start-game');
+var btnMoveLeft = document.getElementById('btn-move-left');
+var btnMoveRight = document.getElementById('btn-move-right');
 
 //Create Canvas
 var canvas = document.getElementById('canvas');
@@ -14,6 +16,14 @@ You should see small red border around canvas.*/
 ctx.strokeStyle = "#FF0000";
 ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
+function updateCanvas(){
+  setInterval(function(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawTruck();
+  },100)
+}
+
+updateCanvas();
 
 
 /*
@@ -136,3 +146,8 @@ btnStart.addEventListener('click', hideStartWindow);
 function hideStartWindow() {
 	document.getElementById('start-screen-window').style.display = "none";
 }
+
+//Event listeners for movement buttons in game.  More needs added to it for press and hold to allow acceleration.
+btnMoveLeft.addEventListener('click', moveLeft);
+btnMoveRight.addEventListener('click', moveRight);
+
