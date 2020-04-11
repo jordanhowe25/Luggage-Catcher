@@ -33,9 +33,12 @@ body {
 }
 
 .score-block {
-    display: inline-block;
-    width: 19%;
+    display: flex;
+    width: 20%;
     height: 100%;
+	float: left;
+	align-items: center;
+	justify-content: center;
 }
 
 .pop-up-window {
@@ -103,12 +106,14 @@ body {
     display: inline-block;
     width: 40%;
     height: 100%;
+	float: left;
 }
 
 #btn-move-left {
     display: inline-block;
     width: 40%;
     height: 100%;
+	float: left;
 }
 
 /******************* Start window *********************/
