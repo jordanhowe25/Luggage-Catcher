@@ -20,7 +20,7 @@ function updateCanvas(){
   setInterval(function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawTruck();
-  },100)
+  },10)
 }
 
 updateCanvas();
@@ -37,7 +37,7 @@ var cat = {
 }
 
 
-updateCanvas(); 
+
 
 
 // scoring functionality, Calling $('#id') will return a jQuery object that wraps the DOM object and provides jQuery methods., .html is A function returning the HTML content to set and returns as String
@@ -58,35 +58,10 @@ function LosePoints(pointsLost){
 //   alert("Game Over");
 // }
 
-// sets the cat's image
-var catImage = new Image();
-catImage.src = './images/cat.png';
 
 
-// draws cat 
-
-function drawCat(){
-  ctx.drawImage(catImage,cat.x,cat.y, cat.width, cat.height)
-}
 
 
-// controls movement
-document.onkeydown = function (e) {
-  console.log("working moving!!!!");
-  if (e.which === 38){
-    cat.y -= 20;
-  }
-  else if (e.which === 40)
-  {
-    cat.y += 20;
-  }
-  else if (e.which === 37){
-    cat.x -= 20;
-  }
-  else if (e.which === 39){
-    cat.x += 20;
-  }
-}
   
  // collision detection, set y property to any number greater than 1000 in order to make the object disappear
 
@@ -147,7 +122,36 @@ function hideStartWindow() {
 	document.getElementById('start-screen-window').style.display = "none";
 }
 
-//Event listeners for movement buttons in game.  More needs added to it for press and hold to allow acceleration.
-btnMoveLeft.addEventListener('click', moveLeft);
-btnMoveRight.addEventListener('click', moveRight);
+//Event listeners for movement buttons in game.  
+//Left-Button
+btnMoveLeft.addEventListener('mousedown', function() {
+  moveLeft();
+  
+  leftBtnHold = setInterval(function(){
+    moveLeft();
+ 
+  }, 100);
+} );
+
+btnMoveLeft.addEventListener('mouseup', function(){
+  clearInterval(leftBtnHold);
+  truckStop();
+  
+});
+
+//Right-Button
+btnMoveRight.addEventListener('mousedown', function() {
+  moveRight();
+  
+  rightBtnHold = setInterval(function(){
+    moveRight();
+    
+  }, 100);
+} );
+
+btnMoveRight.addEventListener('mouseup', function(){
+  clearInterval(rightBtnHold);
+  truckStop();
+  
+});
 
