@@ -23,7 +23,10 @@ function updateCanvas(){
   },10)
 }
 
-updateCanvas();
+function startGame(){
+  hideStartWindow();
+  updateCanvas();
+}
 
 
 /*
@@ -116,7 +119,7 @@ function updateCanvas(){
 */
 
 /* Hides Start Window Screen when Start button is pressed */
-btnStart.addEventListener('click', hideStartWindow);
+btnStart.addEventListener('click', startGame);
 
 function hideStartWindow() {
 	document.getElementById('start-screen-window').style.display = "none";
