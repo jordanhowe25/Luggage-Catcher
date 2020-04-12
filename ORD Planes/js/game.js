@@ -122,8 +122,8 @@ function hideStartWindow() {
 	document.getElementById('start-screen-window').style.display = "none";
 }
 
-//Event listeners for movement buttons in game.  
-//Left-Button
+/*Event listeners for movement buttons in game*/
+/*Left Button:  Listeners for both mouse and touch*/
 btnMoveLeft.addEventListener('mousedown', function() {
   moveLeft();
   
@@ -138,8 +138,23 @@ btnMoveLeft.addEventListener('mouseup', function(){
   truckStop();
   
 });
+btnMoveLeft.addEventListener('touchstart', function() {
+  moveLeft();
+  
+  leftBtnHold = setInterval(function(){
+    moveLeft();
+ 
+  }, 100);
+} );
 
-//Right-Button
+btnMoveLeft.addEventListener('touchend', function(){
+  clearInterval(leftBtnHold);
+  truckStop();
+  
+});
+
+
+/*Right Button:  Listeners for both mouse and touch*/
 btnMoveRight.addEventListener('mousedown', function() {
   moveRight();
   
@@ -155,3 +170,17 @@ btnMoveRight.addEventListener('mouseup', function(){
   
 });
 
+btnMoveRight.addEventListener('touchstart', function() {
+  moveRight();
+  
+  rightBtnHold = setInterval(function(){
+    moveRight();
+    
+  }, 100);
+} );
+
+btnMoveRight.addEventListener('touchend', function(){
+  clearInterval(rightBtnHold);
+  truckStop();
+  
+});
