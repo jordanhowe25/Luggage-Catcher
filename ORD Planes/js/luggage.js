@@ -1,7 +1,13 @@
-/*
+
 var cupCakesArray = [];
-var cupcakeImage = new Image();
-cupcakeImage.src = "./images/cupcake.png";
+var CrateImageOne = new Image();
+CrateImageOne.src = "./images/LuggageCrate1.png";
+var CrateImageTwo = new Image();
+CrateImageTwo.src = "./images/LuggageCrate2.png";
+var CrateImageThree = new Image();
+CrateImageThree = "./images/LuggageCrate3.png";
+var CrateImageFour = new Image();
+CrateImageFour = "./images/LuggageCrate4.png";
 infiniteCupcakes();
 
 function infiniteCupcakes (){
@@ -40,10 +46,9 @@ function fallingCake (cupcake){
 function drawAllTheCupcakes(){
     //  console.log("falling");
    cupCakesArray.forEach(function(oneCupcake){
-        ctx.drawImage(cupcakeImage,oneCupcake.x, oneCupcake.y,oneCupcake.width, oneCupcake.height)
+        ctx.drawImage(CrateImageOne,oneCupcake.x, oneCupcake.y,oneCupcake.width, oneCupcake.height)
    }) 
 
 }
-*/
 
 
