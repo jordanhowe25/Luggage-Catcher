@@ -8,20 +8,20 @@ var CrateImageThree = new Image();
 CrateImageThree = "./images/LuggageCrate3.png";
 var CrateImageFour = new Image();
 CrateImageFour = "./images/LuggageCrate4.png";
-infiniteCupcakes();
+infiniteLuggage();
 
-function infiniteCupcakes (){
-    var cupcakeIndex = 0;
+function infiniteLuggage (){
+    var luggageIndex = 0;
     setInterval(function(){
-        addcupCake();
-        fallingCake(cupCakesArray[cupcakeIndex]);
-        cupcakeIndex++;
+        addLuggage();
+        fallingLuggage(cupCakesArray[luggageIndex]);
+        luggageIndex++;
     }, 2000)
 }
 
 // var theCupCake = {y: 0, x: 0 };
 
-function addcupCake() {
+function addLuggage() {
     var rando = Math.floor(Math.random() * 1000);
     theCupCake = {
         x: 0, 
@@ -34,7 +34,7 @@ function addcupCake() {
 }
 
 
-function fallingCake (cupcake){
+function fallingLuggage (cupcake){
     var id = setInterval(function(){
         cupcake.y+=8
         if(cupcake.y > 1000){
