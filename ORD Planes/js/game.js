@@ -20,12 +20,13 @@ function updateCanvas(){
   setInterval(function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawTruck();
+    
   },10)
 }
 
 function startGame(){
   hideStartWindow();
-  updateCanvas();
+  //updateCanvas();
 }
 
 
@@ -136,11 +137,9 @@ btnMoveLeft.addEventListener('mousedown', function() {
   }, 100);
 } );
 
-btnMoveLeft.addEventListener('mouseup', function(){
-  clearInterval(leftBtnHold);
-  truckStop();
-  
-});
+
+btnMoveLeft.addEventListener('mouseout', truckStop);
+
 btnMoveLeft.addEventListener('touchstart', function() {
   moveLeft();
   
@@ -155,6 +154,8 @@ btnMoveLeft.addEventListener('touchend', function(){
   truckStop();
   
 });
+
+
 
 
 /*Right Button:  Listeners for both mouse and touch*/
