@@ -19,7 +19,8 @@ ctx.strokeRect(0, 0, canvas.width, canvas.height);
 function updateCanvas(){
   setInterval(function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawTruck();
+      drawTruck();
+      drawLuggage();
   },10)
 }
 
