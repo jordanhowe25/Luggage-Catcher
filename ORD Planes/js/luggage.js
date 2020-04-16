@@ -2,13 +2,13 @@
 // Declare Variables
 var luggageArray = [];
 var luggageImageOne = new Image();
-CrateImageOne.src = "./images/LuggageCrate1.png";
+LuggageImageOne.src = "./images/LuggageCrate1.png";
 var luggageImageTwo = new Image();
-CrateImageTwo.src = "./images/LuggageCrate2.png";
+LuggageImageTwo.src = "./images/LuggageCrate2.png";
 var luggageImageThree = new Image();
-CrateImageThree = "./images/LuggageCrate3.png";
+LuggageImageThree = "./images/LuggageCrate3.png";
 var luggageImageFour = new Image();
-CrateImageFour = "./images/LuggageCrate4.png";
+LuggageImageFour = "./images/LuggageCrate4.png";
 infiniteLuggage();
 
 function infiniteLuggage (){
@@ -20,35 +20,37 @@ function infiniteLuggage (){
     }, 2000)
 }
 
-var theLuggage = {y: 0, x: 0 };
+
 
 function addLuggage() {
     var rando = Math.floor(Math.random() * 1000);
-    theLuggage = {
+    luggage = {
         x: 0, 
         y: 0, 
         width:50,
         height:50 
     };
-    theLuggage.x = rando;
-    luggageArray.push(theLuggage);
+    luggage.x = rando;
+    luggageArray.push(luggage);
 }
 
 
 function fallingLuggage (luggage){
     var id = setInterval(function(){
         luggage.y+=8
-        if(luggage.y > 1000){
-            clearInterval(id)
+        if(luggage.y > 650){
+            // Add code here to pause the luggage for about 1 sec. before disappering
+            clearInterval(id)  
         }
     },100)
 }
 
-function drawAllTheLuggage(){
+function drawLuggage(){
     //  console.log("falling");
    luggageArray.forEach(function(oneLuggage){
         ctx.drawImage(luggageImageOne,oneLuggage.x, oneLuggage.y,oneLuggage.width, oneLuggage.height)
-   }) 
+    })       // We need to randomize which luggage crate is created between the 4 of them.
+             // Maybe a randnum between 1 and 4.  Then a switch with 1-4 where each option is a different crate image?
 
 }
 
