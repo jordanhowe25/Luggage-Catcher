@@ -45,13 +45,35 @@ function fallingLuggage (luggage){
     },100)
 }
 
-function drawLuggage(){
+function drawLuggage() {
     //  console.log("falling");
-   luggageArray.forEach(function(oneLuggage){
-        ctx.drawImage(luggageImageOne,oneLuggage.x, oneLuggage.y,oneLuggage.width, oneLuggage.height)
-    })       // We need to randomize which luggage crate is created between the 4 of them.
-             // Maybe a randnum between 1 and 4.  Then a switch with 1-4 where each option is a different crate image?
-
+    luggageArray.forEach(function (oneLuggage) {
+        ctx.drawImage(luggageImageOne, oneLuggage.x, oneLuggage.y, oneLuggage.width, oneLuggage.height)
+    })
 }
+// We need to randomize which luggage crate is created between the 4 of them.
+// Maybe a randnum between 1 and 4.  Then a switch with 1-4 where each option is a different crate image?
+    /*  
+       var x = console.log(Math.ceil(Math.random() * 10))
+        switch (x)
+        case 1:
+            luggageArray.forEach(function(oneLuggage){
+            ctx.drawImage(luggageImageOne,oneLuggage.x, oneLuggage.y,oneLuggage.width, oneLuggage.height)})
+            break;
+        case 2:
+            luggageArray.forEach(function(oneLuggage){
+            ctx.drawImage(luggageImageTwo,oneLuggage.x, oneLuggage.y,oneLuggage.width, oneLuggage.height)})
+            break;
+        case 3:
+            luggageArray.forEach(function(oneLuggage){
+            ctx.drawImage(luggageImageThree,oneLuggage.x, oneLuggage.y,oneLuggage.width, oneLuggage.height)})
+            break;
+        case 4:
+            luggageArray.forEach(function(oneLuggage){
+            ctx.drawImage(luggageImageFour,oneLuggage.x, oneLuggage.y,oneLuggage.width, oneLuggage.height)})
+            break;
+    */
+
+
 
 
