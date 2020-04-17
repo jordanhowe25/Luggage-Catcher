@@ -1,6 +1,9 @@
 //global vars
-var canvasWidth = (window.innerWidth * .7);
-var canvasHeight = (window.innerHeight * .7);
+var canvasWidth = 1400;
+var canvasHeight = 700;
+var btnStart = document.getElementById('btn-start-game');
+var btnMoveLeft = document.getElementById('btn-move-left');
+var btnMoveRight = document.getElementById('btn-move-right');
 
 //Create Canvas
 var canvas = document.getElementById('canvas');
@@ -13,6 +16,18 @@ You should see small red border around canvas.*/
 ctx.strokeStyle = "#FF0000";
 ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
+function updateCanvas(){
+  setInterval(function(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawTruck();
+      drawLuggage();
+  },10)
+}
+
+function startGame(){
+  hideStartWindow();
+  updateCanvas();
+}
 
 
 /*
@@ -26,7 +41,7 @@ var cat = {
 }
 
 
-updateCanvas(); 
+
 
 
 // scoring functionality, Calling $('#id') will return a jQuery object that wraps the DOM object and provides jQuery methods., .html is A function returning the HTML content to set and returns as String
@@ -47,35 +62,10 @@ function LosePoints(pointsLost){
 //   alert("Game Over");
 // }
 
-// sets the cat's image
-var catImage = new Image();
-catImage.src = './images/cat.png';
 
 
-// draws cat 
-
-function drawCat(){
-  ctx.drawImage(catImage,cat.x,cat.y, cat.width, cat.height)
-}
 
 
-// controls movement
-document.onkeydown = function (e) {
-  console.log("working moving!!!!");
-  if (e.which === 38){
-    cat.y -= 20;
-  }
-  else if (e.which === 40)
-  {
-    cat.y += 20;
-  }
-  else if (e.which === 37){
-    cat.x -= 20;
-  }
-  else if (e.which === 39){
-    cat.x += 20;
-  }
-}
   
  // collision detection, set y property to any number greater than 1000 in order to make the object disappear
 
@@ -128,3 +118,73 @@ function updateCanvas(){
   },100)
 }
 */
+
+/* Hides Start Window Screen when Start button is pressed */
+btnStart.addEventListener('click', startGame);
+
+function hideStartWindow() {
+	document.getElementById('start-screen-window').style.display = "none";
+}
+
+/*Event listeners for movement buttons in game*/
+/*Left Button:  Listeners for both mouse and touch*/
+btnMoveLeft.addEventListener('mousedown', function() {
+  moveLeft();
+  
+  leftBtnHold = setInterval(function(){
+    moveLeft();
+ 
+  }, 100);
+} );
+
+btnMoveLeft.addEventListener('mouseup', function(){
+  clearInterval(leftBtnHold);
+  truckStop();
+  
+});
+btnMoveLeft.addEventListener('touchstart', function() {
+  moveLeft();
+  
+  leftBtnHold = setInterval(function(){
+    moveLeft();
+ 
+  }, 100);
+} );
+
+btnMoveLeft.addEventListener('touchend', function(){
+  clearInterval(leftBtnHold);
+  truckStop();
+  
+});
+
+
+/*Right Button:  Listeners for both mouse and touch*/
+btnMoveRight.addEventListener('mousedown', function() {
+  moveRight();
+  
+  rightBtnHold = setInterval(function(){
+    moveRight();
+    
+  }, 100);
+} );
+
+btnMoveRight.addEventListener('mouseup', function(){
+  clearInterval(rightBtnHold);
+  truckStop();
+  
+});
+
+btnMoveRight.addEventListener('touchstart', function() {
+  moveRight();
+  
+  rightBtnHold = setInterval(function(){
+    moveRight();
+    
+  }, 100);
+} );
+
+btnMoveRight.addEventListener('touchend', function(){
+  clearInterval(rightBtnHold);
+  truckStop();
+  
+});

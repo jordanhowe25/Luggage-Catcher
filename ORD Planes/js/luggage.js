@@ -1,49 +1,79 @@
-/*
-var cupCakesArray = [];
-var cupcakeImage = new Image();
-cupcakeImage.src = "./images/cupcake.png";
-infiniteCupcakes();
 
-function infiniteCupcakes (){
-    var cupcakeIndex = 0;
+// Declare Variables
+var luggageArray = [];
+var luggageImageOne = new Image();
+LuggageImageOne.src = "./images/LuggageCrate1.png";
+var luggageImageTwo = new Image();
+LuggageImageTwo.src = "./images/LuggageCrate2.png";
+var luggageImageThree = new Image();
+LuggageImageThree = "./images/LuggageCrate3.png";
+var luggageImageFour = new Image();
+LuggageImageFour = "./images/LuggageCrate4.png";
+infiniteLuggage();
+
+function infiniteLuggage (){
+    var luggageIndex = 0;
     setInterval(function(){
-        addcupCake();
-        fallingCake(cupCakesArray[cupcakeIndex]);
-        cupcakeIndex++;
+        addLuggage();
+        fallingLuggage(luggageArray[luggageIndex]);
+        luggageIndex++;
     }, 2000)
 }
 
-// var theCupCake = {y: 0, x: 0 };
 
-function addcupCake() {
+
+function addLuggage() {
     var rando = Math.floor(Math.random() * 1000);
-    theCupCake = {
+    luggage = {
         x: 0, 
         y: 0, 
         width:50,
         height:50 
     };
-    theCupCake.x = rando;
-    cupCakesArray.push(theCupCake);
+    luggage.x = rando;
+    luggageArray.push(luggage);
 }
 
 
-function fallingCake (cupcake){
+function fallingLuggage (luggage){
     var id = setInterval(function(){
-        cupcake.y+=8
-        if(cupcake.y > 1000){
-            clearInterval(id)
+        luggage.y+=8
+        if(luggage.y > 650){
+            // Add code here to pause the luggage for about 1 sec. before disappering
+            clearInterval(id)  
         }
     },100)
 }
 
-function drawAllTheCupcakes(){
+function drawLuggage() {
     //  console.log("falling");
-   cupCakesArray.forEach(function(oneCupcake){
-        ctx.drawImage(cupcakeImage,oneCupcake.x, oneCupcake.y,oneCupcake.width, oneCupcake.height)
-   }) 
-
+    luggageArray.forEach(function (oneLuggage) {
+        ctx.drawImage(luggageImageOne, oneLuggage.x, oneLuggage.y, oneLuggage.width, oneLuggage.height)
+    })
 }
-*/
+// We need to randomize which luggage crate is created between the 4 of them.
+// Maybe a randnum between 1 and 4.  Then a switch with 1-4 where each option is a different crate image?
+    /*  
+       var x = console.log(Math.ceil(Math.random() * 10))
+        switch (x)
+        case 1:
+            luggageArray.forEach(function(oneLuggage){
+            ctx.drawImage(luggageImageOne,oneLuggage.x, oneLuggage.y,oneLuggage.width, oneLuggage.height)})
+            break;
+        case 2:
+            luggageArray.forEach(function(oneLuggage){
+            ctx.drawImage(luggageImageTwo,oneLuggage.x, oneLuggage.y,oneLuggage.width, oneLuggage.height)})
+            break;
+        case 3:
+            luggageArray.forEach(function(oneLuggage){
+            ctx.drawImage(luggageImageThree,oneLuggage.x, oneLuggage.y,oneLuggage.width, oneLuggage.height)})
+            break;
+        case 4:
+            luggageArray.forEach(function(oneLuggage){
+            ctx.drawImage(luggageImageFour,oneLuggage.x, oneLuggage.y,oneLuggage.width, oneLuggage.height)})
+            break;
+    */
+
+
 
 

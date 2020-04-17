@@ -1,6 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+      p.double {border-style: double;}
+  </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=ed">
@@ -8,15 +11,37 @@
   <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-  <div class="canvas-container">
-    <div class="timer">GAME TIMER</div>
-    <canvas id="canvas"></canvas>
-  </div>
-  <div class="dashboard-container">
-    <button class="btn-move-right">MOVE RIGHT</button>
-    <div class="score-block">SCORE GOES HERE</div>
-    <button class="btn-move-left">MOVE LEFT</button>
-  </div>
+	<div id="start-screen-window" class="pop-up-window">
+		<div class="start-game-block instructions-block">
+			<h1 class="game-tite">ORD Planes</h1>
+			<h3>Objective:</h3>
+			<p class="double">The plane overhead has a problem with its luggage storage.  It is dropping luggage all over the place.
+                Your objective is to catch as much luggage as you can within three minutes.
+                Be careful though, if you miss more than xxxx pieces of luggage, it will be game over!</p>
+			<h3>How to play:</h3>
+			<p class="double">Touch the 'LEFT' and 'RIGHT' buttons to move the truck left and right.  You will automatically catch luggage if it lands on your truck.</p>
+			<button id="btn-start-game" class="purple-white-btn" >START</button>
+		</div>
+	</div>
+	<div class="canvas-container">
+		<div class="timer">GAME TIMER</div>
+		<canvas id="canvas"></canvas>
+	</div>
+    <div class="dashboard-container">
+		<button id="btn-move-left">MOVE LEFT</button>
+		<div class="score-block">
+			<p>SCORE GOES HERE</p>
+		</div>
+		<button id="btn-move-right">MOVE RIGHT</button>
+    </div>
+	<div id="end-screen-window" class="pop-up-window">
+		<div class="end-game-block instructions-block">
+			<h1 class="game-title">ORD Planes</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis suscipit assumenda harum, illo nostrum tempora similique libero odio modi eum nobis est nisi alias magnam asperiores voluptatum earum unde doloremque.</p>
+			<button id="btn-quit" class="white-purple-btn">Quit game</button>
+			<button id="btn-replay" class="purple-white-btn">PLAY AGAIN</button>
+		</div>
+	</div>
 
 
 
@@ -32,10 +57,11 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-  <script src="./js/game.js"></script>
+  <script src="./js/truck.js"></script> 
   <script src="./js/luggage.js"></script>
   <script src="./js/plane.js"></script>
-  <script src="./js/truck.js"></script>
+  <script src="./js/game.js"></script>
+  
   
 </body>
 
