@@ -5,17 +5,13 @@ var btnStart = document.getElementById('btn-start-game');
 var btnMoveLeft = document.getElementById('btn-move-left');
 var btnMoveRight = document.getElementById('btn-move-right');
 var truck = Truck;
+var plane = Plane;
 
 //Create Canvas
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;
-
-/*This is just a test to show that the height and width are set for the canvas properly.  
-You should see small red border around canvas.*/
-ctx.strokeStyle = "#FF0000";
-ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
 function updateCanvas(){
   setInterval(function(){
@@ -28,6 +24,7 @@ function updateCanvas(){
 function startGame(){
   hideStartWindow();
   truck = new Truck({});
+  plane = new Plane({});
 }
 
 /*

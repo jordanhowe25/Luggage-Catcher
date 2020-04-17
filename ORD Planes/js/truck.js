@@ -87,6 +87,7 @@ class Truck {
     }  
 }
 
+
 draw(x = this.x, y = this.y) {
   // update position data
   this.x = x;
