@@ -62,7 +62,7 @@ function hideStartWindow() {
 btnMoveLeft.addEventListener('mousedown', function() {
   leftBtnHold = setInterval(function(){
     truck.move((truck._speed - (truck._speed * 2)));
- 
+    
   }, 10);
 } );
 btnMoveLeft.addEventListener('mouseup', function(){

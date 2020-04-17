@@ -9,7 +9,7 @@ class Truck {
           './images/truck-left.png',
           './images/truck-right.png'
       ],
-      speed = 1
+      speed = 5
   }) {
       // position data
       this._x = x;
@@ -70,12 +70,21 @@ class Truck {
     
     if (px >= 0) {
       this.image = this.images[1];
+      //Checks if within bounds when moving right
+      if ((this.x + this.speed) > 1290) {
+        this.draw(1290); 
+      } else {
+        this.draw(this.x + this.speed);
+      }
     } else {
       this.image = this.images[0];
-    }
-    
-
-    this.draw(this.x + px); // TODO: bounds!!!!
+      //Checks if within bounds when moving left
+      if ((this.x + this.speed) < 0) {
+        this.draw(0);
+      } else {
+        this.draw(this.x - this.speed);
+      }
+    }  
 }
 
 draw(x = this.x, y = this.y) {
