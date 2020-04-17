@@ -20,13 +20,12 @@ function updateCanvas(){
   setInterval(function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawTruck();
-    
   },10)
 }
 
 function startGame(){
   hideStartWindow();
-  //updateCanvas();
+  updateCanvas();
 }
 
 

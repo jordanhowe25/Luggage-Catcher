@@ -3,7 +3,7 @@ var truckSpeed = 10;
 
 /************** TRUCK IMAGE HANDLING *******************************/
 var truckImage = new Image();
-truckImage.src = './images/truck-left.png';
+truckImage.src = './images/truck 1.png';
 
 /************* TRUCK OBJECT PROPERTIES ***************************/
 var truck = {
@@ -18,30 +18,27 @@ function drawTruck(){
   ctx.drawImage(truckImage, truck.x, truck.y, truck.width, truck.height);
 }
 
-
 /*Moves truck to the left.  Checks if the truck is at a position greater than 0 which is the left edge of canvas.
 Checks if the current position and the current speed will draw the truck outside of the 0 position, if so then 
 draws it at 0 instead.
 */
 function moveLeft(){
-  truckImage.src = './images/truck-left.png'
   if (truck.x > 0) {
     if ((truck.x - truckSpeed) < 0) {
       truck.x = 0;
     } else {
       truck.x -= truckSpeed;
       truckSpeed += 2;
-      
     } 
   }
   
 }
 
-/*Moves truck to the right.  Checks if the truck is at a position less than 1290.  Checks if the current position and speed will draw the
+/*Moves truck to the right.  Checks if the truck is at a position less than 1290.  In its current setup, even though
+canvas is set to be 1400 wide, 1290 is the edge of the canvas.  Checks if the current position and speed will draw the
 truck outside of the 1290 position, if so then draws it at 1290 instead.
 */
 function moveRight(){
-  truckImage.src = './images/truck-right.png'
   if (truck.x < 1290) {
     if ((truck.x + truckSpeed) > 1290) {
       truck.x = 1290;

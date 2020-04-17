@@ -11,7 +11,6 @@
     ].forEach(src => {
         const img = new Image();
         img.src = src;
-        return img;
-        
+        return img;  
     })
 })();
