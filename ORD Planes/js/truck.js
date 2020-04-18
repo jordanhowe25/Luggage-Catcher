@@ -118,7 +118,7 @@ draw(x = this.x, y = this.y) {
         const y = this.y;
         this.clear();
         this.draw();
-    }, 10);
+    }, 100);
 }
 
   stopAnimation() {

@@ -1,7 +1,8 @@
 (() => {
     [
         // put assets here
-        './images/Luggage Crate.png',
+        './images/plane-left.png',
+        './images/plane-right.png',
         './images/truck-left.png',
         './images/truck-right.png',
         './images/luggage-blue.png',

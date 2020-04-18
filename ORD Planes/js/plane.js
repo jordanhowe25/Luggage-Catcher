@@ -32,6 +32,8 @@ class Plane {
   
         // start animation lifecycle
         this.startAnimation();
+
+        this.spawnLuggage();
     }
   
     //Getters and Setters
@@ -49,6 +51,8 @@ class Plane {
     set image(src) { this._image = src; }
     get animationInterval() { return this._animationInterval; }
     set animationInterval(interval) { this._animationInterval = interval }
+    get spawnInterval() { return this._spawnInterval; }
+    set spawnInterval(interval) {this._spawnInterval = interval}
   
     loadImages(images) {
         return images.map(src => {
@@ -115,8 +119,6 @@ class Plane {
     startAnimation() {
         this.draw();
         this.animationInterval = setInterval(() => {
-          const x = this.x;
-          const y = this.y;
           this.clear();
           this.move(this.speed);
       }, 10);
@@ -125,6 +127,17 @@ class Plane {
     stopAnimation() {
         clearInterval(this.animationInterval);
         this.animationInterval = null;
+    }
+
+    spawnLuggage() {
+        this.spawnInterval = setInterval(() => {
+            var temp0 = new Luggage({x:this.x, y:this.y});
+        }, 1000);
+    }
+
+    stopSpawn() {
+        clearInterval(this.spawnInterval);
+        this.spawnInterval = null;
     }
   };
   
