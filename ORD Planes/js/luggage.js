@@ -92,10 +92,11 @@ class Luggage {
 
     startAnimation() {
         this.animationInterval = setInterval(() => {
+            this.checkCollisions();
             if (this.y == 560) {
                 this.clear();
                 this.stopAnimation();
-            } else {
+            } else {  
                 this.clear();
                 this.update(); 
             }
@@ -105,6 +106,18 @@ class Luggage {
     stopAnimation() {
         clearInterval(this.animationInterval);
         this.animationInterval = null;
+    }
+
+    checkCollisions() {
+        if (this.checkHitbox(truck)) {
+            this.clear();
+            this.stopAnimation();
+            console.log("object collided");
+        }
+    }
+    checkHitbox(otherObject){
+        console.log("x: " + otherObject.x + " width: " + otherObject.width);
+        return (((this.x + this.width/2) > otherObject.x && (this.x < (otherObject.x + otherObject.width))) && ((this.y + this.height) > otherObject.y && (this.y < (otherObject.y + otherObject.height))));
     }
 };
 
