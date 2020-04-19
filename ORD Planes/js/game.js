@@ -6,6 +6,7 @@ var btnMoveLeft = document.getElementById('btn-move-left');
 var btnMoveRight = document.getElementById('btn-move-right');
 var truck = Truck;
 var plane = Plane;
+var score = 0;
 
 //Create Canvas
 var canvas = document.getElementById('canvas');
@@ -26,25 +27,20 @@ function startGame(){
   truck = new Truck({});
   plane = new Plane({});
 }
-
-/*
-// scoring functionality, Calling $('#id') will return a jQuery object that wraps the DOM object and provides jQuery methods., .html is A function returning the HTML content to set and returns as String
-
-var score = 0;
 function ShowScore(){
   $(".score").html(score);
 
 }
+
+/*
+// scoring functionality, Calling $('#id') will return a jQuery object that wraps the DOM object and provides jQuery methods., .html is A function returning the HTML content to set and returns as String
+
+
+
 function AddPoints(pointsToAdd){
   score += pointsToAdd;
 }
-function LosePoints(pointsLost){
-  score -= pointsLost;
-}
 
-// if (score < 0){
-//   alert("Game Over");
-// }
 */
 
 /* Hides Start Window Screen when Start button is pressed */

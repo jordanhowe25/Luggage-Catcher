@@ -70,34 +70,35 @@ class Plane {
 
     move(px) {
         // move defined amount of pixels use +/-
-        this.clear();
-        
         if (px >= 0) {
           this.image = this.images[1];
           //Checks if within bounds when moving right
           if ((this.x + this.speed) > 1700) {
             this.speed = (this.speed * -1);
-            this.draw(this.x - this.speed)
+            this.draw()
           } else {
-            this.draw(this.x + this.speed);
+            this.draw();
           }
         } else {
           this.image = this.images[0];
           //Checks if within bounds when moving left
           if ((this.x + this.speed) < -300) {
             this.speed = (this.speed * -1);
-            this.draw(this.x + this.speed);
+            this.draw();
           } else {
-            this.draw(this.x + this.speed);
+            this.draw();
           }
         }  
     }
 
-    draw(x= this.x, y = this.y) {
-    this.x = x;
-    this.y = y;
-  
+    update() {
+      this.x += this.speed;
+    }
+
+    draw() {
     // draw on canvas
+    this.clear();
+    this.update();
     this.canvas.drawImage(
         this.image,
         this.x, 
@@ -106,7 +107,7 @@ class Plane {
         this.height
     );
   }
-  
+
     clear() {
         this.canvas.clearRect(
             this.x,
@@ -116,12 +117,9 @@ class Plane {
         );
     }
   
-    startAnimation() {
-        this.draw();
-        this.animationInterval = setInterval(() => {
-          this.clear();
-          this.move(this.speed);
-      }, 10);
+  startAnimation() {
+    requestAnimationFrame(() => this.startAnimation());
+    this.move(this.speed);
   }
   
     stopAnimation() {
@@ -129,9 +127,17 @@ class Plane {
         this.animationInterval = null;
     }
 
+    //Spawns luggage within canvas view on an interval and adjusts where the luggage is spawned in repect to the plane position.
     spawnLuggage() {
         this.spawnInterval = setInterval(() => {
-            var temp0 = new Luggage({x:this.x, y:this.y});
+          if (this.x > 0 && this.x < (canvas.width - this.width)) {
+            if (this.speed > 0) {
+              new Luggage({x:(this.x - 10), y:(this.y + this.height - 10)});
+            } else {
+              new Luggage({x:(this.x + this.width - 15), y:(this.y + this.height + - 10)});
+              
+            }
+          } 
         }, 1000);
     }
 

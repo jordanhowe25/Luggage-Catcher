@@ -67,9 +67,9 @@ class Luggage {
     }
     
     update() {
+        this.clear();
         this.y += this.speed;
         this.draw();
-        this.checkCollisions();
     }
 
     draw() {
@@ -91,7 +91,7 @@ class Luggage {
         );
     }
 
-    startAnimation() {
+    /*startAnimation() {
         this.animationInterval = setInterval(() => {
             if (this.y == 560) {
                 this.clear();
@@ -101,23 +101,31 @@ class Luggage {
                 this.update(); 
             }
         }, 10);
-    }
+    }*/
+    startAnimation() {
+       const request = requestAnimationFrame(() => this.startAnimation(request));
+        if (this.y == 560){
+            this.clear();
+            cancelAnimationFrame(request);
+        } else {
+            this.update();
+            if(this.checkCollisions()) {
+                this.clear();
+                cancelAnimationFrame(request);
+            }
+        }
+        
+      }
 
-    stopAnimation() {
-        clearInterval(this.animationInterval);
-        this.animationInterval = null;
-    }
 
     checkCollisions() {
         if (this.checkHitbox(truck)) {
-            this.clear();
-            this.stopAnimation();
-
-            
+            score ++;
+            ShowScore();
+           return true;
         }
     }
     checkHitbox(otherObject){
-        
         return (((this.x + this.width) > otherObject.x && (this.x < (otherObject.x + otherObject.width))) && ((this.y + this.height) > otherObject.y && (this.y < (otherObject.y + otherObject.height))));
     }
 };

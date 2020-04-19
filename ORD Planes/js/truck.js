@@ -113,16 +113,12 @@ draw(x = this.x, y = this.y) {
   }
 
   startAnimation() {
-    this.animationInterval = setInterval(() => {
-        const x = this.x;
-        const y = this.y;
-        this.clear();
-        this.draw();
-    }, 100);
-}
-
-  stopAnimation() {
-      clearInterval(this.animationInterval);
-      this.animationInterval = null;
+    requestAnimationFrame(() => this.startAnimation());
+    const x = this.x;
+    const y = this.y;
+    this.clear();
+    this.draw();
+  
   }
+  
 };

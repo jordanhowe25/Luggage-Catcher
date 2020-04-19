@@ -35,12 +35,15 @@ body {
 }
 
 .score-block {
-    display: flex;
     width: 20%;
     height: 100%;
 	float: left;
 	align-items: center;
 	justify-content: center;
+}
+
+.score {
+    font-size: x-large;
 }
 
 .pop-up-window {
