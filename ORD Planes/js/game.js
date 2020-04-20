@@ -8,6 +8,11 @@ var truck = Truck;
 var plane = Plane;
 var score = 0;
 
+//CountDown
+const startingMinutes = 3;
+let time = startingMinutes * 60;
+const countdownEl = document.getElementById('countdown');
+
 //Create Canvas
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
