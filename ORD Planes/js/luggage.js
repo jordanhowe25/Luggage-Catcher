@@ -11,7 +11,9 @@ class Luggage {
             './images/luggage-yellow.png',
             './images/luggage-red.png'
         ],
-        speed = 1
+        speed = 1,
+        minSpeed = 1,
+        maxSpeed = 1
     }) {
         // position data
         this._x = x;
@@ -19,6 +21,8 @@ class Luggage {
         this._height = height;
         this._width = width;
         this._speed = speed;
+        this._minSpeed = minSpeed;
+        this._maxSpeed = maxSpeed;
 
         // parent canvas
         this._canvas = canvas;
@@ -28,6 +32,14 @@ class Luggage {
 
         // loadImage images
         this.loadImage();
+
+        //Set min and max speed range based on score
+        this.setRandomSpeedVars(score);
+
+        // Randomize speed per min and max speed variables
+        this._speed = this.randomSpeed();
+        console.log(this.speed)
+       
  
         // draw to canvas at intial position
         this.draw();
@@ -51,6 +63,10 @@ class Luggage {
     set image(src) { this._image = src; }
     get animationInterval() { return this._animationInterval; }
     set animationInterval(interval) { this._animationInterval = interval }
+    get minSpeed() { return this._minSpeed; }
+    set minSpeed(minSpeed) {this._minSpeed = minSpeed}
+    get maxSpeed() { return this._maxSpeed; }
+    set maxSpeed(maxSpeed) {this._maxspeed = maxSpeed}
 
     loadImages(images) {
         return images.map(src => {
@@ -91,20 +107,37 @@ class Luggage {
         );
     }
 
-    /*startAnimation() {
-        this.animationInterval = setInterval(() => {
-            if (this.y == 560) {
-                this.clear();
-                this.stopAnimation();
-            } else {  
-                this.clear();
-                this.update(); 
-            }
-        }, 10);
-    }*/
+    setRandomSpeedVars(score) {
+        if (score < 25) {
+            this._minSpeed = 1;
+            this._maxSpeed = 1;
+        } else if (score < 50) {
+            this._minSpeed = 1;
+            this._maxSpeed = 2;
+        } else if (score < 75) {
+            this._minSpeed = 1;
+            this._maxSpeed = 3;
+        } else if (score < 100) {
+            this._minSpeed = 2;
+            this._maxSpeed = 3;
+        } else if (score < 125) {
+            this._minSpeed = 2;
+            this._maxSpeed = 4;
+        } else {
+            this._minSpeed = 2;
+            this._maxSpeed = 5;
+        }
+    }
+
+    randomSpeed(){
+      const min = Math.ceil(this._minSpeed);
+      const max = Math.floor(this.maxSpeed);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
     startAnimation() {
        const request = requestAnimationFrame(() => this.startAnimation(request));
-        if (this.y == 560){
+        if (this.y >= 560){
             this.clear();
             cancelAnimationFrame(request);
         } else {

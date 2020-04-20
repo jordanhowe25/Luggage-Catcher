@@ -26,7 +26,7 @@ class Plane {
   
         // loadImage images
         this.loadImage();
-  
+
         // draw to canvas at intial position
         this.draw(this.x, this.y);
   
@@ -53,6 +53,7 @@ class Plane {
     set animationInterval(interval) { this._animationInterval = interval }
     get spawnInterval() { return this._spawnInterval; }
     set spawnInterval(interval) {this._spawnInterval = interval}
+    
   
     loadImages(images) {
         return images.map(src => {
@@ -67,6 +68,8 @@ class Plane {
     loadImage() {
         this.image = this.images[Math.floor(Math.random() * this.images.length)];
     }
+
+    
 
     move(px) {
         // move defined amount of pixels use +/-
@@ -108,15 +111,19 @@ class Plane {
     );
   }
 
-    clear() {
-        this.canvas.clearRect(
-            this.x,
-            this.y,
-            this.width,
-            this.height,
-        );
-    }
-  
+  clear() {
+      this.canvas.clearRect(
+          this.x,
+          this.y,
+          this.width,
+          this.height,
+      );
+  }
+  triggerSpawn() {
+    const random_boolean = Math.random() >= 0.5;
+    return random_boolean;
+  }
+
   startAnimation() {
     requestAnimationFrame(() => this.startAnimation());
     this.move(this.speed);
@@ -129,16 +136,18 @@ class Plane {
 
     //Spawns luggage within canvas view on an interval and adjusts where the luggage is spawned in repect to the plane position.
     spawnLuggage() {
-        this.spawnInterval = setInterval(() => {
+      this.spawnInterval = setInterval(() => {
+        if (this.triggerSpawn()) {
           if (this.x > 0 && this.x < (canvas.width - this.width)) {
             if (this.speed > 0) {
               new Luggage({x:(this.x - 10), y:(this.y + this.height - 10)});
             } else {
               new Luggage({x:(this.x + this.width - 15), y:(this.y + this.height + - 10)});
-              
+                
             }
           } 
-        }, 1000);
+        }
+      }, 333);
     }
 
     stopSpawn() {
