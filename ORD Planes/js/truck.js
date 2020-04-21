@@ -121,11 +121,21 @@ class Truck {
   }
 
   startAnimation() {
-    requestAnimationFrame(() => this.startAnimation());
+    const req = requestAnimationFrame(() => this.startAnimation(req));
     const x = this.x;
     const y = this.y;
-    this.clear();
-    this.draw();
+    if (!this.game.endGame) {
+      this.clear();
+      this.draw();
+    } else {
+      cancelAnimationFrame(req);
+      this.clear();
+    }
+  }
+
+  stopAnimation() {
+    cancelAnimationFrame(req);
+    this.clear
   }
 
   // return vertices of boundingbox

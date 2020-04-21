@@ -11,6 +11,7 @@ class Game {
     this._canvasElementId = canvasElementId;
     this._onScoreUpdate = onScoreUpdate;
     this._luggageSpawnInterval = luggageSpawnInterval;
+    this._endGame = false;
   
     this.createCanvas(canvasElementId);
   }
@@ -33,6 +34,9 @@ class Game {
   get score(){ return this._score; }
   set score(value){ this._score = value; }
 
+  get endGame(){ return this._endGame; }
+  set endGame(value){ this._endGame = value; }
+
   get truck(){ return this._truck; }
   set truck(value) { this._truck = value; }
 
@@ -49,6 +53,10 @@ class Game {
     canvas.height = this.canvasHeight;
 
     return this.canvas;
+  }
+
+  clearCanvas(){
+    this.canvas.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
   updateScore(int = 0) {
@@ -71,6 +79,7 @@ class Game {
       game: this,
     });
   }
+  
 
   stopLuggageSpawner() {
     clearInterval(this.luggageSpawner);
@@ -108,11 +117,21 @@ class Game {
   }
 
   start() {
+    this.score = 0;
+    this.endGame = false;
     this.updateScore(0, () => {});
     this.spawnTruck();
     this.spawnPlane();
     this.startLuggageSpawner();
   }
+
+  stop() {
+    this.stopLuggageSpawner();
+    this.endGame = true;
+    this.truck = null;
+    this.plane = null;
+  }
+
 
   // return true if two bounding boxes collided
   static didCollide(obj1, obj2){

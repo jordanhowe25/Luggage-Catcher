@@ -117,14 +117,17 @@ class Plane {
   }
   
   startAnimation() {
-    requestAnimationFrame(() => this.startAnimation());
-    this.move(this.speed);
+    const req = requestAnimationFrame(() => this.startAnimation(req));
+    if (!this.game.endGame) {
+      this.move(this.speed);
+    } else {
+      cancelAnimationFrame(req);
+      this.clear();
+    }
+    
   }
   
-  stopAnimation() {
-    clearInterval(this.animationInterval);
-    this.animationInterval = null;
-  }
+  
 
   // return vertices of boundingbox
   getBoundingBox() {

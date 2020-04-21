@@ -102,7 +102,7 @@ class Luggage {
   
     startAnimation() {
       const request = requestAnimationFrame(() => this.startAnimation(request));
-      if (this.y >= 560){
+      if (this.y >= 560 || game.endGame == true){
         // collided with bottom of screen -- no points
         this.clear();
         cancelAnimationFrame(request);
