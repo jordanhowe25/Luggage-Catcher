@@ -1,101 +1,137 @@
-//global vars
-var canvasWidth = 1400;
-var canvasHeight = 700;
-var btnStart = document.getElementById('btn-start-game');
-var btnMoveLeft = document.getElementById('btn-move-left');
-var btnMoveRight = document.getElementById('btn-move-right');
-var truck = Truck;
-var plane = Plane;
-var score = 0;
+/* globals Truck Luggage Plane */
 
-//Create Canvas
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
-canvas.width = canvasWidth;
-canvas.height = canvasHeight;
-
-function updateCanvas(){
-  setInterval(function(){
-    ctx.clearRect(truck.x, truck.y, truck.width, truck.height);
-    drawTruck();
-    
-  },10)
-}
-
-function startGame(){
-  hideStartWindow();
-  truck = new Truck({});
-  plane = new Plane({});
-}
-function ShowScore(){
-  $(".score").html(score);
-
-}
-
-/*
-// scoring functionality, Calling $('#id') will return a jQuery object that wraps the DOM object and provides jQuery methods., .html is A function returning the HTML content to set and returns as String
-
-
-
-function AddPoints(pointsToAdd){
-  score += pointsToAdd;
-}
-
-*/
-
-/* Hides Start Window Screen when Start button is pressed */
-btnStart.addEventListener('click', startGame);
-
-function hideStartWindow() {
-	document.getElementById('start-screen-window').style.display = "none";
-}
-
-/*Event listeners for movement buttons in game*/
-/*Left Button:  Listeners for both mouse and touch*/
-btnMoveLeft.addEventListener('mousedown', function() {
-  leftBtnHold = setInterval(function(){
-    truck.move((truck._speed - (truck._speed * 2)));
-    
-  }, 10);
-} );
-btnMoveLeft.addEventListener('mouseup', function(){
-  clearInterval(leftBtnHold);
-});
-
-btnMoveLeft.addEventListener('touchstart', function() {
+class Game {
+  constructor({
+    canvasElementId,
+    onScoreUpdate = (/* score */) => {},
+    luggageSpawnInterval = 333,
+  }){
+    this._score = 0;
+    this._luggage = new Set();
+    this._canvasElementId = canvasElementId;
+    this._onScoreUpdate = onScoreUpdate;
+    this._luggageSpawnInterval = luggageSpawnInterval;
   
-  
-  leftBtnHold = setInterval(function(){
-    truck.move((truck._speed - (truck._speed * 2)));
-  }, 10);
-} );
+    this.createCanvas(canvasElementId);
+  }
 
-btnMoveLeft.addEventListener('touchend', function(){
-  clearInterval(leftBtnHold);
-});
+  get canvas(){ return this._canvas; }
+  set canvas(value){ this._canvas = value; }
+
+  get canvasWidth(){ return 1400; }
+  get canvasHeight(){ return 700; }
+
+  get canvasElementId(){ return this._canvasElementId; }
+
+  get onScoreUpdate(){ return this._onScoreUpdate; }
+
+  get luggageSpawnInterval() { return this._luggageSpawnInterval; }
+
+  get luggageSpawner() { return this._luggageSpawner; }
+  set luggageSpawner(val) { this._luggageSpawner = val; }
+
+  get score(){ return this._score; }
+  set score(value){ this._score = value; }
+
+  get truck(){ return this._truck; }
+  set truck(value) { this._truck = value; }
+
+  get luggage(){ return this._luggage; }
+
+  get plane(){ return this._plane; }
+  set plane(value) { this._plane = value; }
 
 
-/*Right Button:  Listeners for both mouse and touch*/
-btnMoveRight.addEventListener('mousedown', function() {
-  rightBtnHold = setInterval(function(){
-    truck.move(truck._speed);
-    
-  }, 10);
-} );
+  createCanvas(elementId){ 
+    const canvas = document.getElementById(elementId);
+    this.canvas = canvas.getContext('2d');
+    canvas.width = this.canvasWidth;
+    canvas.height = this.canvasHeight;
 
-btnMoveRight.addEventListener('mouseup', function(){
-  clearInterval(rightBtnHold);
-  
-  
-});
+    return this.canvas;
+  }
 
-btnMoveRight.addEventListener('touchstart', function() {
-  rightBtnHold = setInterval(function(){
-    truck.move(truck._speed);
-    
-  }, 10);
-} );
+  updateScore(int = 0) {
+    this.score += int;
+    this.onScoreUpdate(this.score)
+  }
 
-btnMoveRight.addEventListener('touchend', function(){
-  clearInterval(rightBtnHold);
+  moveX(int) {
+    this.truck.move(int);
+  }
+
+  spawnTruck() {
+   this.truck = new Truck({
+     game: this,
+   });
+  }
+
+  spawnPlane() {
+    this.plane = new Plane({
+      game: this,
+    });
+  }
+
+  stopLuggageSpawner() {
+    clearInterval(this.luggageSpawner);
+    this.luggageSpawner = null;
+  }
+
+  startLuggageSpawner() {
+    this.luggageSpawner = setInterval(
+      () => this.spawnLuggage(), 
+      this.luggageSpawnInterval
+    );
+  }
+
+  // spawn luggage relative to plane
+  spawnLuggage() {
+    const {x, y, width, height} = this.plane;
+    const offsetX = 15;
+    const offsetY = 10;
+    const triggerSpawn = Math.random() >= 0.5;
+
+    // only spawn luggage if plane is on screen
+    if (this.plane.x >= 0 && this.plane.x + this.plane.width <= this.canvasWidth) {
+      //50-50 chance that the interval will create luggage. Adds some randomness.
+      if (triggerSpawn) {
+        // spawn some luggage
+        this.luggage.add(
+          new Luggage({
+            x: (x + width - offsetX),
+            y: (y + height + - offsetY),
+            game: this,
+          })
+        );
+      }
+    }
+  }
+
+  start() {
+    this.updateScore(0, () => {});
+    this.spawnTruck();
+    this.spawnPlane();
+    this.startLuggageSpawner();
+  }
+
+  // return true if two bounding boxes collided
+  static didCollide(obj1, obj2){
+    // since we have getBoundingBox it should be easy
+    if (!obj1.getBoundingBox && !obj2.getBoundingBox) return false;
+
+    // get boxes
+    const box1 = obj1.getBoundingBox();
+    const box2 = obj2.getBoundingBox();
+
+    // check for intersections based on the vertices from bounding box
+    return (box1.topLeft.x < (box2.bottomRight.x) && 
+    (box1.bottomRight.x) > box2.topLeft.x) && 
+    (box1.topLeft.y < (box2.bottomRight.y) && 
+    (box1.bottomRight.y) > box2.topLeft.y);
+  }
+}
+
+const game = new Game({
+  canvasElementId: 'canvas',
+  onScoreUpdate: (score) => $('.score').text(score),
 });
