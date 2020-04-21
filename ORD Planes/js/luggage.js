@@ -1,3 +1,4 @@
+
 /* globals Game */
 
 class Luggage {
@@ -128,3 +129,4 @@ class Luggage {
     }
   };
   
+
