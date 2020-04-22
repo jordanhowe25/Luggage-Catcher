@@ -11,7 +11,8 @@ class Game {
     this._canvasElementId = canvasElementId;
     this._onScoreUpdate = onScoreUpdate;
     this._luggageSpawnInterval = luggageSpawnInterval;
-    this.time = 180;
+    this._time = 180;
+    this._endGame = false;
   
     this.createCanvas(canvasElementId);
   }
@@ -34,9 +35,6 @@ class Game {
   get score(){ return this._score; }
   set score(value){ this._score = value; }
 
-  get time(){ return this._time; }
-  set time(value){ this._time = value; }
-
   get truck(){ return this._truck; }
   set truck(value) { this._truck = value; }
 
@@ -44,6 +42,16 @@ class Game {
 
   get plane(){ return this._plane; }
   set plane(value) { this._plane = value; }
+
+  get timer() { return this._timer; }
+  set timer(value) { this._timer = value; }
+  
+  get time(){ return this._time; }
+  set time(value){ this._time = value; }
+
+  get endGame() { return this._endGame; }
+  set endGame(value){ this._endGame = value; }
+
 
 
   createCanvas(elementId){ 
@@ -59,28 +67,26 @@ class Game {
     this.canvas.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
   
-  /********************** Timer Countdown ******************************/
-  const startingMinutes = .10;
-  let time = startingMinutes * 60;
-  const time001 = document.getElementById('time001');
-
-  var c = setInterval(updateCountdown,1000);
-
-  function updateCountdown()
+  startCountdown()
   {
-  const minutes = Math.floor(time/60);
-  let seconds = time % 60;
-  seconds = seconds <10? '0' + seconds:seconds;
+    this.timer = setInterval(() => {
+      var seconds = this.time;
+      const minutes = Math.floor(seconds/60);
+      const time001 = document.getElementById('time001');
+      seconds = seconds % 60;
+      seconds = seconds <10? '0' + seconds:seconds;
+      time001.innerHTML = minutes + ':' + seconds;
+      this.time --;
+      if (this.time < 0) {
+        this.stopCountdown();
+      }
+    }, 1000);
+  }
 
-  time001.innerHTML = minutes + ':' + seconds;
-  time--;
-
-    if (time < 0){
-      clearInterval(c);
-    }
-
-}
-/********************** Timer Countdown ******************************/
+  stopCountdown() {
+    clearInterval(this.timer);
+    this.stop();
+  }
 
   updateScore(int = 0) {
     this.score += int;
@@ -147,23 +153,24 @@ class Game {
   }
 
   start() {
-    this.score = 0;
     this.endGame = false;
+    this.score = 0;
+    this.time = 180;
+    this.startCountdown();
     this.updateScore(0, () => {});
     this.spawnTruck();
     this.spawnPlane();
     this.startLuggageSpawner();
-   
   }
 
   stop() {
     this.stopLuggageSpawner();
+    this.endGame = true;
     this.clearPlane();
     this.clearTruck();
-    this.endGame = true;
     this.truck = null;
     this.plane = null;
-    //$('#end-screen-window').show();
+    $('#end-screen-window').show();
   }
 
   // return true if two bounding boxes collided

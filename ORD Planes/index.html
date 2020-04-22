@@ -13,24 +13,30 @@
 		<div class="start-game-block instructions-block">
 			<h1 class="game-tite">ORD Planes</h1>
 			<h3>Objective:</h3>
-			<p class="double">The plane overhead has a problem with its luggage storage.  It is dropping luggage all over the place.
+			<p class="double">Butch O'Hare needs your help!!!  Help Butch O'Hare deliver the passengers luggage by collecting his deliveries.
                 Your objective is to catch as much luggage as you can within three minutes.
-                Be careful though, if you miss more than xxxx pieces of luggage, it will be game over!</p>
+            </p>
 			<h3>How to play:</h3>
-			<p class="double">Touch the 'LEFT' and 'RIGHT' buttons to move the truck left and right.  You will automatically catch luggage if it lands on your truck.</p>
+			<p class="double">Touch and hold the 'LEFT' and 'RIGHT' buttons to move the collector left and right.  You will automatically catch the falling luggage if it lands on your collector.</p>
 			<button id="btn-start-game" class="purple-white-btn" >START</button>
+			<button id="btn-main-menu" class="purple-white-btn" >MAIN MENU</button>
 		</div>
 	</div>
 	<div id="end-screen-window" class="pop-up-window">
 		<div class="end-game-block instructions-block">
 			<h1 class="game-title">ORD Planes</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis suscipit assumenda harum, illo nostrum tempora similique libero odio modi eum nobis est nisi alias magnam asperiores voluptatum earum unde doloremque.</p>
-			<button id="btn-quit" class="white-purple-btn">Quit game</button>
+			<p>You did it!!!  Thank you so much for helping Butch O'Hare deliver all of the passengers luggage, you are our hero!!!</br> 
+			Press the <b>PLAY AGAIN</b> button to try again</br> 
+			Or </br>
+			Press the <b>QUIT GAME</b> button to return to the menu. 
+			</p>
+			<button id="btn-goto-start" class="white-purple-btn">START MENU</button>
 			<button id="btn-replay" class="purple-white-btn">PLAY AGAIN</button>
 		</div>
 	</div>
 	<div class="canvas-container">
 		<div class="timer" id="time001"> 3:00 </div>
+		<button id="btn-reset">RESET GAME</button>
 		<canvas id="canvas"></canvas>
 	</div>
     <div class="dashboard-container">

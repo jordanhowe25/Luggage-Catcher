@@ -32,14 +32,29 @@ const bindToTouch = (selector, handler) => {
     });
   }
   
-  const btnStart = $('#btn-start-game');
-  const btnMoveLeft = $('#btn-move-left');
-  const btnMoveRight = $('#btn-move-right');
-  
   bindToTouch('#btn-start-game', () => {
     $('#start-screen-window').hide();
     game.start()
   });
+
+  bindToTouch('#btn-replay', () => {
+    $('#end-screen-window').hide();
+    game.start()
+  });
+  
+  bindToTouch('#btn-goto-start', () => {
+    $('#end-screen-window').hide();
+    $('#start-screen-window').show();
+  });
+
+  bindToTouch('#btn-reset', () => {
+    game.stop();
+  });
+
+  bindToTouch('#btn-main-menu', () => {
+    window.location.href = 'http://www.flywithbutchohare.com';
+  });
+
   
   bindToHoldWithAcceleration('#btn-move-left', (ticks) => game.moveX(-(game.truck.speed * ticks)));
   bindToHoldWithAcceleration('#btn-move-right', (ticks) => game.moveX(game.truck.speed * ticks));

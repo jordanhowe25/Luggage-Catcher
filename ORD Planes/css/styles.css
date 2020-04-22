@@ -11,6 +11,7 @@ body {
     left: 40%;
     position: absolute;
 }
+
 .canvas {
     position: absolute;
     
@@ -63,6 +64,16 @@ body {
 }
 
 /******************* Buttons *********************/
+#btn-reset {
+    border: 1px solid black;
+    text-align: center;
+    width: 9%;
+    height: 5%;
+    right: 0%;
+    margin: 5px;
+    position: absolute;
+}
+
 #btn-start-game {
 	margin-top: 20px;
 }
