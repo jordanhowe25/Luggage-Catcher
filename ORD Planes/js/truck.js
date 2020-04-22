@@ -120,22 +120,17 @@ class Truck {
     );
   }
 
-  startAnimation() {
-    const req = requestAnimationFrame(() => this.startAnimation(req));
-    const x = this.x;
-    const y = this.y;
-    if (!this.game.endGame) {
-      this.clear();
-      this.draw();
-    } else {
-      cancelAnimationFrame(req);
-      this.clear();
-    }
-  }
+ startAnimation() {
+   this.animationInterval = requestAnimationFrame(() => this.startAnimation(this.animationInterval));
+   const x = this.x;
+   const y = this.y;
+   this.clear();
+   this.draw();
+ }
 
   stopAnimation() {
-    cancelAnimationFrame(req);
-    this.clear
+    cancelAnimationFrame(this.animationInterval);
+    this.clear();
   }
 
   // return vertices of boundingbox

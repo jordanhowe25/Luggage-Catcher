@@ -116,16 +116,15 @@ class Plane {
     );
   }
   
-  startAnimation() {
-    const req = requestAnimationFrame(() => this.startAnimation(req));
-    if (!this.game.endGame) {
-      this.move(this.speed);
-    } else {
-      cancelAnimationFrame(req);
-      this.clear();
-    }
-    
-  }
+ startAnimation() {
+   this.animationInterval = requestAnimationFrame(() => this.startAnimation(this.animationInterval));
+   this.move(this.speed);
+ }
+
+ stopAnimation() {
+   cancelAnimationFrame(this.animationInterval);
+   this.clear();
+ }
   
   
 
