@@ -8,10 +8,28 @@ var truck = Truck;
 var plane = Plane;
 var score = 0;
 
-//CountDown
-const startingMinutes = 3;
+// Timer Countdown
+const startingMinutes = .10;
 let time = startingMinutes * 60;
-const countdownEl = document.getElementById('countdown');
+const time001 = document.getElementById('time001');
+
+var c = setInterval(updateCountdown,1000);
+
+function updateCountdown()
+{
+const minutes = Math.floor(time/60);
+let seconds = time % 60;
+seconds = seconds <10? '0' + seconds:seconds;
+
+time001.innerHTML = minutes + ':' + seconds;
+time--;
+
+  if (time < 0){
+    clearInterval(c);
+  }
+ 
+}
+
 
 //Create Canvas
 var canvas = document.getElementById('canvas');
@@ -27,19 +45,6 @@ function updateCanvas(){
   },10)
 }
 
-setInterval(updateCountdown, 1000);
-
-function updateCountdown() 
-{
-
-const minutes = Math.floor(time/60);
-let seconds = time % 60; 
-
-seconds = seconds <10? '0' + seconds:seconds;
-
-countdownEl.innerHTML = `${minutes}:${seconds}`;
-  time--;
-}
 
 
 function startGame(){
