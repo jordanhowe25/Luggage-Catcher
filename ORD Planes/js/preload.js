@@ -9,6 +9,8 @@
         './images/luggage-pink.png',
         './images/luggage-red.png',
         './images/luggage-yellow.png',
+        './images/airport-truck-right.png',
+        './images/airport-truck-left.png',
     ].forEach(src => {
         const img = new Image();
         img.src = src;

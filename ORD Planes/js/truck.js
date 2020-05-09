@@ -5,8 +5,8 @@ class Truck {
       height = 65,
       width = 112,
       images = [
-          './images/truck-left.png',
-          './images/truck-right.png'
+          './images/airport-truck-left.png',
+          './images/airport-truck-right.png'
       ],
       speed = 5,
       maxSpeed = 15,
