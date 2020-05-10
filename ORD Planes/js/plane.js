@@ -5,8 +5,8 @@ class Plane {
     height = 65,
     width = 112,
     images = [
-        './images/plane-left.png',
-        './images/plane-right.png'
+        './images/airplane-left.png',
+        './images/airplane-right.png'
     ],
     speed = 7,
     game,

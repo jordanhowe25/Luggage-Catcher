@@ -32,26 +32,27 @@ const bindToTouch = (selector, handler) => {
     });
   }
   
-  bindToTouch('#btn-start-game', () => {
+  bindToTouch('#start-button', () => {
     $('#start-screen-window').hide();
+    $('#game-scene').show();
     game.start()
   });
 
-  bindToTouch('#btn-replay', () => {
-    $('#end-screen-window').hide();
-    game.start()
+  bindToTouch('#btn-quit', () => {
+    window.location.href = 'http://www.flywithbutchohare.com';
   });
   
-  bindToTouch('#btn-goto-start', () => {
+  bindToTouch('#btn-replay', () => {
     $('#end-screen-window').hide();
-    $('#start-screen-window').show();
+    $('#game-scene').show();
+    game.start()
   });
 
   bindToTouch('#btn-reset', () => {
     game.stop();
   });
 
-  bindToTouch('#btn-main-menu', () => {
+  bindToTouch('#quit-game', () => {
     window.location.href = 'http://www.flywithbutchohare.com';
   });
 

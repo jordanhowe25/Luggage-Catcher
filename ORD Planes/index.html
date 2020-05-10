@@ -11,42 +11,48 @@
 <body>
 	<div id="start-screen-window" class="pop-up-window">
 		<div class="start-game-block instructions-block">
-			<h1 class="game-tite">ORD Planes</h1>
 			<h3>Objective:</h3>
 			<p class="double">Butch O'Hare needs your help!!!  Help Butch O'Hare deliver the passengers luggage by collecting his deliveries.
                 Your objective is to catch as much luggage as you can within three minutes.
             </p>
 			<h3>How to play:</h3>
 			<p class="double">Touch and hold the 'LEFT' and 'RIGHT' buttons to move the collector left and right.  You will automatically catch the falling luggage if it lands on your collector.</p>
-			<button id="btn-start-game" class="purple-white-btn" >START</button>
-			<button id="btn-main-menu" class="purple-white-btn" >MAIN MENU</button>
+		</div>
+		<div class="btn-container">
+			<ul class="menu-buttons">
+				<li><img id="start-button" src="./images/button_start-game.png" alt="Start Game" ></img></li>
+				<li><img id="quit-game" src="./images/button_quit-game.png" alt="Quit Game"></img></li>
+			</ul>
 		</div>
 	</div>
 	<div id="end-screen-window" class="pop-up-window">
 		<div class="end-game-block instructions-block">
-			<h1 class="game-title">ORD Planes</h1>
 			<p>You did it!!!  Thank you so much for helping Butch O'Hare deliver all of the passengers luggage, you are our hero!!!</br> 
-			Press the <b>PLAY AGAIN</b> button to try again</br> 
-			Or </br>
-			Press the <b>QUIT GAME</b> button to return to the menu. 
-			</p>
-			<button id="btn-goto-start" class="white-purple-btn">START MENU</button>
-			<button id="btn-replay" class="purple-white-btn">PLAY AGAIN</button>
+		</div>
+		<div class="btn-container">
+			<ul class="menu-buttons">
+				<li><img id="btn-replay" src="./images/button_start-game.png" alt="Play again?"></img></li>
+				<li><img id="btn-quit" src="./images/button_quit-game.png" alt="Quit Game"></img></li>
+			</ul>
 		</div>
 	</div>
-	<div class="canvas-container">
-		<div class="timer" id="time001"> 3:00 </div>
-		<button id="btn-reset">RESET GAME</button>
-		<canvas id="canvas"></canvas>
-	</div>
-    <div class="dashboard-container">
-		<button id="btn-move-left">MOVE LEFT</button>
-		<div class="score-block">
-			<div class="score-header"><h2>Total Score</h2></div>
-			<div class="score">0</div>
+	<div id="game-scene">
+		<div class="canvas-container">
+			<div class="timer" id="time001"> 3:00 </div>
+			<button id="btn-reset">RESET GAME</button>
+			<canvas id="canvas"></canvas>
 		</div>
-		<button id="btn-move-right">MOVE RIGHT</button>
-    </div>
+		<div class="dashboard-container">
+			<img id="btn-move-left" src="./images/arrow-left.png" alt="Move Left"></img>
+			<div class="score-block">
+				<div class="score-header"><h2>Total Score</h2></div>
+				<div class="score">0</div>
+			</div>
+			<img id="btn-move-right" src="./images/arrow-right.png" alt="Move Right"></img>
+		</div>
+	</div>
+	
+	
 	
   <!-- audio for game 
   

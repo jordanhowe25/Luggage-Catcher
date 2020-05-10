@@ -170,6 +170,7 @@ class Game {
     this.clearTruck();
     this.truck = null;
     this.plane = null;
+    $('#game-scene').hide();
     $('#end-screen-window').show();
   }
 
