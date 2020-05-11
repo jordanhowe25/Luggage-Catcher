@@ -79,13 +79,13 @@ class Game {
       this.time --;
       if (this.time < 0) {
         this.stopCountdown();
+        this.stop();
       }
     }, 1000);
   }
 
   stopCountdown() {
     clearInterval(this.timer);
-    this.stop();
   }
 
   updateScore(int = 0) {
@@ -137,7 +137,7 @@ class Game {
     const triggerSpawn = Math.random() >= 0.5;
 
     // only spawn luggage if plane is on screen
-    if (this.plane.x >= 0 && this.plane.x + this.plane.width <= this.canvasWidth) {
+    if (this.plane.x >= 0 && this.plane.x + this.plane.width + 25 <= this.canvasWidth) {
       //50-50 chance that the interval will create luggage. Adds some randomness.
       if (triggerSpawn) {
         // spawn some luggage
@@ -164,6 +164,7 @@ class Game {
   }
 
   stop() {
+    this.stopCountdown();
     this.stopLuggageSpawner();
     this.endGame = true;
     this.clearPlane();

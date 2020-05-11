@@ -6,12 +6,18 @@ body {
     background-size: 70.71px 70.71px;
 }
 .timer {
-    border: 1px solid black;
+    border: 1px solid #293c6b;
     text-align: center;
-    width: 15%;
+    width: 7%;
     height: 5%;
-    left: 40%;
+    left: 47%;
     position: absolute;
+    color: #293c6b;
+    background: aliceblue;
+    font-weight: bold;
+    font-size: 2em;
+    margin: 1px auto;
+    top: 3px;
 }
 
 
@@ -25,6 +31,7 @@ body {
     position: absolute;
     overflow: hidden;
     display: block;
+    border: grey solid 5px;
 }
 .dashboard-container {
     height: 200px;
@@ -34,20 +41,28 @@ body {
     position: relative;
     display: block;
     top: 73%;
+    left: 2%;
      
 }
 
 .score-block {
-    width: 32%;
+    width: 175px;
     display: inline-block;
 	align-items: center;
     justify-content: center;
     position: relative;
     float: left;
+    background: aliceblue;
+    margin: 40px 125px;
+    border: grey solid 5px;
+    color: #293c6b;
+    padding-bottom: 15px;
 }
 
 .score {
-    font-size: x-large;
+    font-size: 3em;
+    color: #293c6b;
+    font-weight: bold;
 }
 
 .pop-up-window {
@@ -57,17 +72,19 @@ body {
     z-index: 999;
     background-image: url('../images/game-logo.png');
     left: 17%;
+    border: grey solid 5px;
     
 }
 
 .instructions-block {
     display: block;
-    width: 50%;
+    width: 33%;
+    height: 75%;
     background: aliceblue;
     border: #293c6b solid 5px;
     border-radius: 25px;
     padding: 5px;
-    margin: 10% auto;
+    margin: 10% auto auto auto;
     
 }
 
@@ -79,17 +96,14 @@ body {
     width: 100%;
     left: 17%;
     display: none;
+    
 }
 
 /******************* Buttons *********************/
 #btn-reset {
-    border: 1px solid black;
-    text-align: center;
-    width: 9%;
-    height: 5%;
-    right: 0%;
-    margin: 5px;
     position: absolute;
+    top: 5%;
+    left: 4%;
 }
 
 #btn-start-game {
@@ -132,7 +146,7 @@ body {
     display: inline-block;
     width: 33%;
     height: 100%;
-	float: left;
+    float: left;
 	
 }
 
