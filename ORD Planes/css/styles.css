@@ -10,7 +10,7 @@ body {
     text-align: center;
     width: 7%;
     height: 5%;
-    left: 47%;
+    left: 46%;
     position: absolute;
     color: #293c6b;
     background: aliceblue;
@@ -73,7 +73,33 @@ body {
     background-image: url('../images/game-logo.png');
     left: 17%;
     border: grey solid 5px;
+    color: #293c6b;
     
+}
+
+h3 {
+    font-size: 2em;
+}
+
+.instruction-text {
+    font-size: 20px;
+    line-height: 1.5em;
+}
+
+.end-game-text {
+    font-size: 30px;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.end-score {
+    font-size: 3em;
+    color: #293c6b;
+    font-weight: bold;
+    position: absolute;
+    width: 1400px;
+    bottom: 48%;
+    text-align: center;
 }
 
 .instructions-block {
@@ -85,6 +111,7 @@ body {
     border-radius: 25px;
     padding: 5px;
     margin: 10% auto auto auto;
+    
     
 }
 

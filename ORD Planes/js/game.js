@@ -166,11 +166,13 @@ class Game {
   stop() {
     this.stopCountdown();
     this.stopLuggageSpawner();
+    $('.end-score').text(this.score);
     this.endGame = true;
     this.clearPlane();
     this.clearTruck();
     this.truck = null;
     this.plane = null;
+    
     $('#game-scene').hide();
     $('#end-screen-window').show();
   }
@@ -194,5 +196,5 @@ class Game {
 
 const game = new Game({
   canvasElementId: 'canvas',
-  onScoreUpdate: (score) => $('.score').text(score),
+  onScoreUpdate: (score) => $('.score').text(score), 
 });

@@ -8,16 +8,16 @@
   <link rel="stylesheet" href="./css/styles.css">
   <script src="./js/preload.js"></script> 
 </head>
-<body>
+<body ondragstart="return false;" ondrop="return false;">
 	<img id="btn-reset" src="./images/back_btn.png"><img>
 	<div id="start-screen-window" class="pop-up-window">
 		<div class="start-game-block instructions-block">
 			<h3>Objective:</h3>
-			<p class="double">Butch O'Hare needs your help!!!  Help Butch O'Hare deliver the passengers luggage by collecting his deliveries.
-                Your objective is to catch as much luggage as you can within three minutes.
+			<p class="instruction-text">Butch O'Hare needs your help!!!  Help Butch O'Hare deliver the passengers luggage by collecting his deliveries.
+                Your objective is to catch as much luggage as you can within three minutes.<br><br><br>
             </p>
 			<h3>How to play:</h3>
-			<p class="double">Touch and hold the 'LEFT' and 'RIGHT' buttons to move the collector left and right.  You will automatically catch the falling luggage if it lands on your collector.</p>
+			<p class="instruction-text">Touch and hold the 'LEFT' and 'RIGHT' arrows to move the truck.  You will automatically catch the falling luggage if it lands on your truck.</p>
 		</div>
 		<div class="btn-container">
 			<ul class="menu-buttons">
@@ -28,8 +28,9 @@
 	</div>
 	<div id="end-screen-window" class="pop-up-window">
 		<div class="end-game-block instructions-block">
-			<p>You did it!!!  Thank you so much for helping Butch O'Hare deliver all of the passengers luggage, you are our hero!!!</br> 
+			<p class="end-game-text">YOU DID IT!!!<br><br>YOU SCORED<br><br>POINTS!<br><br>THANK YOU SO MUCH FOR HELPING!<br>YOU ARE OUR HERO!!!</p>
 		</div>
+		<div class="end-score">0</div>
 		<div class="btn-container">
 			<ul class="menu-buttons">
 				<li><img id="btn-replay" src="./images/button_start-game.png" alt="Play again?"></img></li>
