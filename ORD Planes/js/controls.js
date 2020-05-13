@@ -49,7 +49,7 @@ const bindToTouch = (selector, handler) => {
   });
 
   bindToTouch('#btn-reset', () => {
-    window.location.href = 'http://www.flywithbutchohare.com';
+    game.stop();
   });
 
   bindToTouch('#quit-game', () => {
