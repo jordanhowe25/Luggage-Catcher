@@ -1,4 +1,7 @@
 
+html {
+    zoom: 90%;
+}
 @font-face{
     font-family: digitalClock;
     src: url('../fonts/digital-7.ttf');
