@@ -1,7 +1,7 @@
 class Plane {
   constructor({
     x = 0,
-    y = 50,
+    y = 120,
     height = 65,
     width = 112,
     images = [

@@ -173,8 +173,9 @@ class Game {
     this.truck = null;
     this.plane = null;
     
-    $('#game-scene').hide();
-    $('#end-screen-window').show();
+    $('#game-scene').fadeToggle();
+    $('#end-screen-window').fadeToggle();
+    $('#small-logo').fadeToggle();
   }
 
   // return true if two bounding boxes collided

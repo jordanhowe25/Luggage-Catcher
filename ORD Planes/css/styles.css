@@ -1,3 +1,7 @@
+@font-face{
+    font-family: digitalClock;
+    src: url('../fonts/digital-7.ttf');
+}
 
 body {
     overflow: hidden;
@@ -5,19 +9,25 @@ body {
     background-image: linear-gradient(45deg, #293c6b 30%, #2d4175 30%, #2d4175 50%, #293c6b 50%, #293c6b 80%, #2d4175 80%, #2d4175 100%);
     background-size: 70.71px 70.71px;
 }
+#small-logo {
+    position: absolute;
+    bottom: 8%;
+    left: 3%;
+    display: none;
+}
 .timer {
-    border: 1px solid #293c6b;
     text-align: center;
-    width: 7%;
-    height: 5%;
-    left: 46%;
+    left: 42%;
     position: absolute;
     color: #293c6b;
-    background: aliceblue;
+    background-image: url('../images/timer_background.png');
     font-weight: bold;
-    font-size: 2em;
+    font-size: 4em;
     margin: 1px auto;
     top: 3px;
+    font-family: digitalClock;
+    height: 119px;
+    width: 240px;
 }
 
 
@@ -46,23 +56,25 @@ body {
 }
 
 .score-block {
-    width: 175px;
+    width: 240px;
+    height: 170px;
     display: inline-block;
 	align-items: center;
     justify-content: center;
     position: relative;
     float: left;
-    background: aliceblue;
-    margin: 40px 125px;
-    border: grey solid 5px;
-    color: #293c6b;
-    padding-bottom: 15px;
+    background-image: url('../images/score_background.png');
+    margin: 0px 90px;
+    
+    color: white;
 }
 
 .score {
     font-size: 3em;
-    color: #293c6b;
+    color: white;
     font-weight: bold;
+    line-height: 3.75em;
+    font-size: 3.75em;
 }
 
 .pop-up-window {
@@ -82,37 +94,48 @@ h3 {
 }
 
 .instruction-text {
-    font-size: 20px;
-    line-height: 1.5em;
+    font-size: 19px;
+    line-height: 1.25em;
+    color: black;
 }
 
 .end-game-text {
-    font-size: 30px;
+    font-size: 25px;
     line-height: 1.5em;
     text-align: center;
+    color: black;
 }
 
 .end-score {
     font-size: 3em;
-    color: #293c6b;
+    color:black;
     font-weight: bold;
     position: absolute;
     width: 1400px;
-    bottom: 48%;
+    bottom: 38%;
     text-align: center;
 }
 
 .instructions-block {
     display: block;
-    width: 33%;
-    height: 75%;
+    width: 50%;
+    height: 50%;
     background: aliceblue;
     border: #293c6b solid 5px;
     border-radius: 25px;
-    padding: 5px;
-    margin: 10% auto auto auto;
-    
-    
+    padding: 10px;
+    margin: 17% auto auto auto;
+}
+
+.end-game-block{
+    display: block;
+    width: 33%;
+    height: 50%;
+    background: aliceblue;
+    border: #293c6b solid 5px;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 17% auto auto auto;
 }
 
 
@@ -147,13 +170,14 @@ h3 {
 
 .btn-container {
     display: block;
-    margin: 0 auto;
-    width: 300px;
+    margin: 7% auto;
+    width: 550px;
 }
 
 .menu-buttons li {
     list-style-type: none;
     padding: 10px;
+    display: inline;
 }
 
 #btn-quit {

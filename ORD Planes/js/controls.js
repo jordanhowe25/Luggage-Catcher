@@ -33,9 +33,9 @@ const bindToTouch = (selector, handler) => {
   }
   
   bindToTouch('#start-button', () => {
-    $('#start-screen-window').hide();
-    $('#game-scene').show();
-    game.start()
+    $('#start-screen-window').fadeToggle();
+    $('#game-scene').fadeToggle(game.start());
+    $('#small-logo').fadeToggle();
   });
 
   bindToTouch('#btn-quit', () => {
@@ -43,13 +43,13 @@ const bindToTouch = (selector, handler) => {
   });
   
   bindToTouch('#btn-replay', () => {
-    $('#end-screen-window').hide();
-    $('#game-scene').show();
-    game.start()
+    $('#end-screen-window').fadeToggle();
+    $('#game-scene').fadeToggle(game.start());
+    $('#small-logo').fadeToggle();
   });
 
   bindToTouch('#btn-reset', () => {
-    game.stop();
+    window.location.href = 'http://www.flywithbutchohare.com';
   });
 
   bindToTouch('#quit-game', () => {

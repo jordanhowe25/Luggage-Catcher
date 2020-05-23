@@ -3,14 +3,21 @@
         // put assets here
         './images/airplane-left.png',
         './images/airplane-right.png',
-        './images/truck-left.png',
-        './images/truck-right.png',
+        './images/airport-truck-left.png',
+        './images/airport-truck-right.png',
         './images/luggage-blue.png',
         './images/luggage-pink.png',
         './images/luggage-red.png',
         './images/luggage-yellow.png',
-        './images/airport-truck-right.png',
-        './images/airport-truck-left.png',
+        './images/arrow-left.png',
+        './images/arrow-right.png',
+        './images/button_quit-game.png',
+        './images/button_start-game.png',
+        './images/game-logo.png',
+        './images/logo_small.png',
+        './images/score_background.png',
+        './images/timer_background.png',
+        './images/page_background.png',
     ].forEach(src => {
         const img = new Image();
         img.src = src;
