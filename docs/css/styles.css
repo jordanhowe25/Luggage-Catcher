@@ -1,0 +1,222 @@
+
+html {
+    zoom: 90%;
+}
+@font-face{
+    font-family: digitalClock;
+    src: url('../fonts/digital-7.ttf');
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+    background-image: linear-gradient(45deg, #293c6b 30%, #2d4175 30%, #2d4175 50%, #293c6b 50%, #293c6b 80%, #2d4175 80%, #2d4175 100%);
+    background-size: 70.71px 70.71px;
+    user-select: none;
+}
+
+#small-logo {
+    position: absolute;
+    bottom: 8%;
+    left: 3%;
+    display: none;
+}
+.timer {
+    text-align: center;
+    left: 42%;
+    position: absolute;
+    color: #293c6b;
+    background-image: url('../images/timer_background.png');
+    font-weight: bold;
+    font-size: 4em;
+    margin: 1px auto;
+    top: 3px;
+    font-family: digitalClock;
+    height: 119px;
+    width: 240px;
+}
+
+
+.canvas-container {
+    background-image: url('../images/background-Airport.png');
+    background-size: cover;
+    background-position: center;
+    height: 700px;
+    width: 1400px;
+    margin: 0 auto;
+    position: absolute;
+    overflow: hidden;
+    display: block;
+    border: grey solid 5px;
+}
+.dashboard-container {
+    height: 200px;
+    width: 1400px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    top: 73%;
+    left: 2%;
+     
+}
+
+.score-block {
+    width: 240px;
+    height: 170px;
+    display: inline-block;
+	align-items: center;
+    justify-content: center;
+    position: relative;
+    float: left;
+    background-image: url('../images/score_background.png');
+    margin: 0px 90px;
+    
+    color: white;
+}
+
+.score {
+    font-size: 3em;
+    color: white;
+    font-weight: bold;
+    line-height: 3.75em;
+    font-size: 3.75em;
+}
+
+.pop-up-window {
+	position: absolute;
+    width: 1400px;
+    height: 700px;
+    z-index: 999;
+    background-image: url('../images/game-logo.png');
+    left: 17%;
+    border: grey solid 5px;
+    color: #293c6b;
+    
+}
+
+h3 {
+    font-size: 2em;
+}
+
+.instruction-text {
+    font-size: 19px;
+    line-height: 1.25em;
+    color: black;
+}
+
+.end-game-text {
+    font-size: 25px;
+    line-height: 1.5em;
+    text-align: center;
+    color: black;
+}
+
+.end-score {
+    font-size: 3em;
+    color:black;
+    font-weight: bold;
+    position: absolute;
+    width: 1400px;
+    bottom: 38%;
+    text-align: center;
+}
+
+.instructions-block {
+    display: block;
+    width: 50%;
+    height: 50%;
+    background: aliceblue;
+    border: #293c6b solid 5px;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 17% auto auto auto;
+}
+
+.end-game-block{
+    display: block;
+    width: 33%;
+    height: 50%;
+    background: aliceblue;
+    border: #293c6b solid 5px;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 17% auto auto auto;
+}
+
+
+#game-scene {
+    top: 5%;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 17%;
+    display: none;
+    
+}
+
+/******************* Buttons *********************/
+#btn-reset {
+    position: absolute;
+    top: 5%;
+    left: 4%;
+}
+
+#btn-start-game {
+    margin-top: 20px;
+    background:    #ffffff;
+    border:        1px solid #021240;
+    border-radius: 11px;
+    padding:       20px 45px;
+    color:         #293c6b;
+    display:       inline-block;
+    font:          normal bold 25px/1 "Komika", cursive;
+    text-align:    center;
+}
+
+.btn-container {
+    display: block;
+    margin: 7% auto;
+    width: 550px;
+}
+
+.menu-buttons li {
+    list-style-type: none;
+    padding: 10px;
+    display: inline;
+}
+
+#btn-quit {
+	margin-right: 20px;
+}
+
+
+#btn-move-right {
+    display: inline-block;
+    width: 33%;
+    height: 100%;
+	float: left;
+	
+}
+
+#btn-move-left {
+    display: inline-block;
+    width: 33%;
+    height: 100%;
+    float: left;
+	
+}
+
+/******************* Start window *********************/
+#start-screen-window {
+    display: block;
+    top: 5%;
+}
+
+/******************* End window *********************/
+#end-screen-window {
+    display: none;
+    top: 5%;
+}
+
+
