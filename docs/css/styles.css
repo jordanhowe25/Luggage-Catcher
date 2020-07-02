@@ -125,8 +125,9 @@ h3 {
     background: aliceblue;
     border: #293c6b solid 5px;
     border-radius: 25px;
-    padding: 10px;
+    padding: 0 3% 0 3%;
     margin: 17% auto auto auto;
+    opacity: .95;
 }
 
 .instruction-header {
@@ -140,6 +141,7 @@ h3 {
     line-height: 1.5em;
     color: black;
     margin-top: 10px;
+    font-weight: bold;
 }
 
 .end-game-block{
